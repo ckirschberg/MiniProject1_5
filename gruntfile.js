@@ -11,7 +11,9 @@ module.exports = function(grunt) {
                         yuicompress: true
                     },
                     files: {
-                        'app/dist/myStyles.css' : 'app/myStyles.less'
+                        'app/dist/myStyles.css' : 'app/myStyles.less',
+                        'app/dist/form-input.css' : 'app/form-input/form-input.less',
+                        'app/dist/global.css' : 'app/global.less'
                     }
                 }
             }
@@ -20,14 +22,18 @@ module.exports = function(grunt) {
             ,cssmin: {
                 target: {
                     files: {
-                        'app/dist/myStyles.min.css': ['app/dist/myStyles.css']
+                        'app/dist/myStyles.min.css': [
+                            'app/dist/myStyles.css',
+                            'app/dist/form-input.css',
+                            'app/dist/global.css'
+                        ]
                     }
                 }
             }
 
             ,watch: {
                 css: {
-                    files: 'app/*.less',
+                    files: 'app/**/*.less',
                     tasks: ['less', 'cssmin'],
                     options: {
                         livereload: true

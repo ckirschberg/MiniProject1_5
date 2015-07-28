@@ -1,13 +1,3 @@
-html {
-  font-size: 13px;
-  /* rem sizing works based on html font size */
-}
-body {
-  font-family: "futura-pt", sans-serif;
-  font-weight: 300;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
 .top-menu {
   border-bottom: 1px solid #c4c4c4;
   overflow: auto;
