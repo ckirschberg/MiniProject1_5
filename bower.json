@@ -1,0 +1,23 @@
+{
+  "name": "MiniProject1",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ckirschberg/MiniProject1",
+  "authors": [
+    "Christian Kirschberg <ckirschberg@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "ionicons": "~2.0.1",
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.3.0",
+    "jasny-bootstrap": "~3.1.3"
+  }
+}

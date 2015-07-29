@@ -11,13 +11,9 @@
 
     <link href="dist/myStyles.min.css" rel="stylesheet" />
 
-    <script src="../libs/angular.js"></script>
-
-    <script>
-        angular.module("internship", []);
-    </script>
-    <script src="../app/form-input/internshipDataEntryController.js"></script> <!-- Must be after internship declaration. -->
-
+    <!-- Pickadate - CSS -->
+    <link href="../libs/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="../libs/css/default.date.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -64,8 +60,7 @@
                 </div>
                 <div class="right-form">
                     <label>Date</label>
-                    <input type="text" class="form-control" ng-model="visit.date"
-                           placeholder="We will use a datepicker here.."/>
+                    <input type="date" class="form-control datepicker" ng-model="visit.date"/>
                 </div>
             </div>
 
@@ -128,7 +123,21 @@
 
     <!-- Scripts -->
     <script src="../libs/jquery.js"></script> <!-- jQuery -->
+    <script src="../libs/angular.js"></script> <!-- Angular -->
     <script src="../libs/bootstrap.js"></script> <!-- Bootstrap - js -->
     <script src="../libs/jasny-bootstrap.js"></script> <!-- Jasny - js -->
+
+    <!-- pickadate - scripts-->
+    <script src="../libs/picker.js"></script>
+    <script src="../libs/legacy.js"></script> <!-- IE 8 -->
+    <script src="../libs/picker.date.js"></script>
+    <script>
+        angular.module("internship", []);
+    </script>
+    <script src="../app/form-input/internshipDataEntryController.js"></script> <!-- Must be after internship declaration. -->
+
+    <script>
+        $('.datepicker').pickadate();
+    </script>
 </body>
 </html>
