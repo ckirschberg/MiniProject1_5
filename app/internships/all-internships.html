@@ -1,0 +1,67 @@
+<div>
+    <button class="btn btn-primary pull-right" ui-sref="new-internship">
+        Create new internship visit
+    </button>
+</div>
+
+<div>
+    <h3>Internship visits</h3>
+
+    <div class="visit" ng-repeat="visit in internshipVisits" ng-click="editInternship(visit)">
+        <div>
+            <label>Student: </label>
+            <span>{{visit.studentName}}</span>
+        </div>
+        <div>
+            <label>Student Id: </label>
+            <span>
+                {{visit.studentId}}
+            </span>
+        </div>
+        <div>
+            <label>Date: </label>
+            <span class="truncate">
+                {{visit.date | date: 'dd/MM/yyyy'}}
+            </span>
+        </div>
+        <div>
+            <label>Initials: </label>
+            <span class="truncate">
+                {{visit.initials}}
+            </span>
+        </div>
+        <div>
+            <label>Company People: </label>
+            <span class="truncate">
+                {{visit.companyPeople}}
+            </span>
+        </div>
+        <div>
+            <label>Company Name: </label>
+            <span class="truncate">
+                {{visit.companyName}}
+            </span>
+        </div>
+        <div>
+            <label>Company Trends: </label>
+            <span class="truncate">{{visit.companyTrends}}</span>
+        </div>
+        <div>
+            <label>Student Competencies: </label>
+            <span class="truncate">{{visit.studentCompetencies}}</span>
+        </div>
+        <div>
+            <label>Company Competencies: </label>
+            <span class="truncate">{{visit.companyCompetencies}}</span>
+        </div>
+        <div>
+            <label>Company Cooperation: </label>
+            <span class="truncate">{{visit.companyCooperation}}</span>
+        </div>
+        <div>
+            <label>Etc: </label>
+            <span class="truncate">{{visit.etc}}</span>
+        </div>
+    </div>
+
+</div>

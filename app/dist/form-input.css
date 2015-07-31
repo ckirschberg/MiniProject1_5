@@ -36,3 +36,40 @@
 .form-group {
   margin-top: 20px;
 }
+.visit {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  padding: 0 2px;
+}
+@media (min-width: 992px) {
+  .visit {
+    float: left;
+    width: 50%;
+  }
+}
+.visit label {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.visit span {
+  position: relative;
+  float: left;
+  width: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-height: 1px;
+  min-width: 200px;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

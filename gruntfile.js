@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                     },
                     files: {
                         'app/dist/myStyles.css' : 'app/myStyles.less',
-                        'app/dist/form-input.css' : 'app/form-input/form-input.less',
+                        'app/dist/form-input.css' : 'app/internships/form-input.less',
                         'app/dist/global.css' : 'app/global.less'
                     }
                 }

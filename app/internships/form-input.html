@@ -1,0 +1,86 @@
+<form novalidate name="visitForm" ng-submit="saveVisit()">
+    <h3 class="headerAlignCenter">New Internship Visit</h3>
+
+    <div class="form-group">
+        <div class="left-form">
+            <label>Your initials</label>
+            <input type="text" class="form-control" ng-model="visit.initials" name="initials" required
+                   ng-minlength="4"/>
+
+            <div class="error" ng-show="visitForm.initials.$invalid && visitForm.initials.$dirty">
+                <span ng-show="visitForm.initials.$error.required">
+                    Please enter your initials
+                </span>
+                <span ng-show="visitForm.initials.$error.minlength && visitForm.$submitted">
+                    Initials must be at least 4 characters
+                </span>
+            </div>
+        </div>
+        <div class="right-form">
+            <label>Date</label>
+            <input type="text" class="form-control datepicker" ng-model="visit.date"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="left-form">
+            <label>Name of student</label>
+            <input type="text" class="form-control" ng-model="visit.studentName"/>
+        </div>
+        <div class="right-form">
+            <label>ID of student (from email)</label>
+            <input type="text" class="form-control" ng-model="visit.studentId"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="left-form">
+            <label>People you met</label>
+            <input type="text" class="form-control" ng-model="visit.companyPeople"/>
+        </div>
+        <div class="right-form">
+            <label>Company you visited</label>
+            <input type="text" class="form-control" ng-model="visit.companyName"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="left-form">
+            <label>Company's view on trends</label>
+            <textarea class="form-control" rows="4" ng-model="visit.companyTrends"></textarea>
+        </div>
+        <div class="right-form">
+            <label>Company's requirements for competencies</label>
+            <textarea class="form-control" rows="4" ng-model="visit.companyCompetencies"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="left-form">
+            <label>Students competencies</label>
+            <textarea class="form-control" rows="4" ng-model="visit.studentCompetencies"></textarea>
+        </div>
+        <div class="right-form">
+            <label>Cooperation - possibilities</label>
+            <textarea class="form-control" rows="4" ng-model="visit.companyCooperation"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group col-xs-12">
+        <label>Etc.</label>
+        <textarea class="form-control" rows="2" ng-model="visit.etc"></textarea>
+    </div>
+
+    <div class="col-xs-12">
+        <button type="submit" class="btn btn-primary pull-right">Save</button>
+        <button type="button" class="btn btn-default" ui-sref="all-internships">Back</button>
+    </div>
+</form>
+
+
+<div class="col-xs-12">
+    <button class="btn btn-default" ui-sref="new-internship.subview1">Sub view 1</button>
+    <button class="btn btn-default" ui-sref="new-internship.subview2">Sub view 2</button>
+</div>
+
+<div ui-view></div>
