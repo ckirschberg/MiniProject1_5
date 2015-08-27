@@ -21,7 +21,9 @@ app.use(cors());
 var mongodb = require('mongodb');
 var ObjectId = require('mongodb').ObjectID;
 var MongoClient = mongodb.MongoClient;
-var url = 'mongodb://admin:admin@ds036178.mongolab.com:36178/nodeapi';
+var url = 'url to your mongodb';
+//use eg. mongolab.com (free 500 mb database).
+// eg. 'mongodb://**username**:**password**@ds036178.mongolab.com:36178/nodeapi';
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
