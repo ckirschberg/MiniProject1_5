@@ -28,7 +28,4 @@ myApp.controller("mainController", ['$scope', '$http', function($scope, $http) {
         error(function (data, status, headers, config) {
             console.dir("error getting internships");
         });
-
-
-
 }]);

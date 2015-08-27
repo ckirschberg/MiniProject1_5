@@ -1,6 +1,3 @@
-/**
- * Created by christiankirschberg on 03/08/15.
- */
 // server.js
 
 //This is not part of your curriculum, but nice to have to test your client side code.:
@@ -46,7 +43,7 @@ router.use(function(req, res, next) {
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });
+    res.json({ message: 'Welcome to our api!' });
 });
 
 
@@ -99,22 +96,7 @@ router.route('/Internships/GetAll')
     });
 
 
-
-router.route('/Internships/Get/:internship_id')
-
-    // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
-    /*
-    .get(function(req, res) {
-        Bear.findById(req.params.bear_id, function(err, bear) {
-            if (err)
-                res.send(err);
-            res.json(bear);
-        });
-    });
-     */
-
 router.route('/Internships/Update')
-    // update the bear with this id (accessed at PUT http://localhost:8080/api/bears/:bear_id)
     .post(function(req, res) {
 
         MongoClient.connect(url, function (err, db) {
@@ -122,20 +104,9 @@ router.route('/Internships/Update')
                 return console.dir(err);
             }
 
-/*
-            console.log("HERE!!");
-            db.collection("internshipsTest").find({"_id": ObjectId(req.body._id)}).
-                toArray(function(err, items) {
-                console.log("items: " + items.length);
-                console.log(items);
-            });
-*/
-
             var id = ObjectId(req.body._id);
-            //console.log("objectId: " + id);
             delete req.body._id;
             var json = req.body;
-            console.log(json);
 
             var collection = db.collection('internshipsTest');
             collection.update({"_id": id}, json, {upsert: false }, function(err, result) {
@@ -146,7 +117,6 @@ router.route('/Internships/Update')
     });
 
 router.route('/Internships/Delete/:internship_id')
-    // delete the bear with this id (accessed at DELETE http://localhost:8080/api/bears/:bear_id)
     .post(function(req, res) {
         MongoClient.connect(url, function (err, db) {
             if(err) { return console.dir(err); }
@@ -163,11 +133,6 @@ router.route('/Internships/Delete/:internship_id')
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
-
-// START THE SERVER
-// =============================================================================
-//app.listen(port);
-//console.log('Magic happens on port ' + port);
 
 app.listen(8080, function(){
     console.log('CORS-enabled web server listening on port 8080');
