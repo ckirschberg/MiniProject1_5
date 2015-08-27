@@ -50,6 +50,7 @@
     <script src="../libs/jquery.js"></script> <!-- jQuery -->
     <script src="../libs/angular.js"></script> <!-- Angular -->
     <script src="../libs/angular-ui-router.js"></script> <!-- Angular Navigation -->
+    <script src="../libs/angular-resource.js"></script>
     <script src="../libs/bootstrap.js"></script> <!-- Bootstrap - js -->
     <script src="../libs/jasny-bootstrap.js"></script> <!-- Jasny - js -->
     <script src="../libs/underscore.js"></script> <!-- Underscore library -->
@@ -59,13 +60,13 @@
     <script src="../libs/legacy.js"></script> <!-- IE 8 -->
     <script src="../libs/picker.date.js"></script>
     <script>
-        angular.module("internship", ['ui.router']);
+        angular.module("internship", ['ui.router', 'webservice']);
     </script>
     <script src="internships/internshipDataEntryController.js"></script> <!-- Must be after internship declaration. -->
     <script src="internships/internshipsAllController.js"></script> <!-- Must be after internship declaration. -->
     <script src="mainController.js"></script> <!-- Must be after internship declaration. -->
     <script src="navigation.js"></script>
-
+    <script src="internships/internshipsResourceController.js"></script>
     <script>
 
     </script>

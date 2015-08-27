@@ -14,6 +14,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
             url: "/new-internship",
             templateUrl: "internships/form-input.html",
             controller: "internshipDataEntryController",
+            //controller: "internshipsResourceController",
             params: {internship: null}
         })
             .state('new-internship.subview1', {

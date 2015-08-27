@@ -5,40 +5,76 @@
 var internshipModule = angular.module("internship");
 
 internshipModule.controller("internshipDataEntryController",
-    function($scope, $state, $stateParams) { //DI here..
+    function($scope, $state, $stateParams, $http) { //DI here..
         $scope.visit = {};
         $('.datepicker').pickadate();
 
-        console.log($stateParams.internship);
+        //console.log($stateParams.internship);
         if ($stateParams.internship) {
             $scope.visit = $stateParams.internship;
         }
 
+        $scope.deleteVisit = function() {
+
+            //console.log("visit");
+            //console.log($scope.visit);
+
+            //$http({ method: 'DELETE', url: '/Internships/' + $scope.visit.id}).
+            $http({ method: 'POST', url: 'http://localhost:8080/api/Internships/Delete/' + $scope.visit._id}).
+                success(function (data, status, headers, config) {
+
+                    $scope.$parent.internshipVisits.splice(
+                        $scope.$parent.internshipVisits.indexOf($scope.visit), 1);
+
+                    //or with underscore
+                    /*
+                    var index = _.findIndex($scope.$parent.internshipVisits,
+
+                        {id: $scope.visit.id});
+
+                    $scope.$parent.internshipVisits.splice(index, 1);
+                     */
+                    $state.go('all-internships');
+                }).
+                error(function (data, status, headers, config) {
+                    console.log("error deleting internship")
+                });
+        };
 
         $scope.saveVisit = function()
         {
-            if ($scope.visitForm.$valid){
+            if ($scope.visitForm.$valid) {
                 if ($stateParams.internship) {//edit
-                    //fint the index of the object we edited and then replace it
+                    //find the index of the object we edited and then replace it
                     //with the new, user-edited object.
-                    /*
-                    for (var i=0; i < $scope.$parent.internshipVisits.length; i++){
-                        if ($scope.$parent.internshipVisits[i].id == $scope.visit.id){
-                            $scope.$parent.internshipVisits[i] = $scope.visit;
-                        }
-                    }
-                    */
 
-                    //or with underscore
+                    //$http({ method: 'POST', url: '/Internships/Edit', data: $scope.visit }).
+                    $http({ method: 'POST', url: 'http://localhost:8080/api/Internships/Update',
+                        data: $scope.visit }).
+                        success(function (data, status, headers, config) {
+                        }).
+                        error(function (data, status, headers, config) {
+                            console.log("error editing internship");
+                        });
+
+                    //Should this be if success?
                     var index = _.findIndex($scope.$parent.internshipVisits,
                         {id: $scope.visit.id});
-
                     $scope.$parent.internshipVisits[index] = $scope.visit;
                 }
                 else
                 { //new
                     //accessing the parent scope (mainController)
-                    $scope.$parent.internshipVisits.push($scope.visit);
+
+                    //$http({ method: 'POST', url: '/api/Internships', data: $scope.visit }).
+                    $http({ method: 'POST', url: 'http://localhost:8080/api/Internships/Create',
+                        data: $scope.visit }).
+                        success(function (data, status, headers, config) {
+                            $scope.internshipVisits.push($scope.visit);
+                        }).
+                        error(function (data, status, headers, config) {
+                            console.log("error creating internship")
+                        });
                 }
 
                 //then navigate back to the list of internships.
