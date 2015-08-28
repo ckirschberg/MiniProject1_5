@@ -1,6 +1,3 @@
-/**
- * Created by christiankirschberg on 02/08/15.
- */
 var myApp = angular.module("webservice", ['ngResource']);
 
 myApp.constant("baseUrl", "http:/yoururlhere/")

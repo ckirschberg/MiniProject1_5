@@ -88,7 +88,6 @@ router.route('/Internships/GetAll')
 
             var collection = db.collection('internshipsTest');
 
-
             collection.find().toArray(function(err, items) {
                 res.json(items);
             });
