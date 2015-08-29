@@ -4,8 +4,11 @@
 
 var myApp = angular.module("internship");
 
-myApp.controller("mainController", ['$scope', '$http', function($scope, $http) {
-    console.log("hello from mainController");
+myApp.controller("mainController", ['$scope', '$http', '$resource',
+    function($scope, $http, $resource) {
+        console.log("hello from mainController");
+
+
 
     /*
     $http.get("internships/hardcodedInternships.json").
@@ -17,6 +20,13 @@ myApp.controller("mainController", ['$scope', '$http', function($scope, $http) {
         });
     */
 
+    var baseUrl = "http://localhost:8080/api/Internships/";
+    $scope.internshipsResource = $resource(baseUrl + ":id",
+        { id: "@id"});
+
+    $scope.internshipVisits = $scope.internshipsResource.query();
+
+    /*
     //$http.get("http://localhost:8080/api/Internships").
     $http({ method: 'GET',
         url: "http://localhost:8080/api/Internships/getall"}).
@@ -28,4 +38,5 @@ myApp.controller("mainController", ['$scope', '$http', function($scope, $http) {
         error(function (data, status, headers, config) {
             console.dir("error getting internships");
         });
+    */
 }]);

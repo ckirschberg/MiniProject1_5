@@ -5,7 +5,7 @@
 var internshipModule = angular.module("internship");
 
 internshipModule.controller("internshipDataEntryController",
-    function($scope, $state, $stateParams, $http) { //DI here..
+    function($scope, $state, $stateParams, $http, $resource) { //DI here..
         $scope.visit = {};
         $('.datepicker').pickadate();
 
@@ -14,12 +14,12 @@ internshipModule.controller("internshipDataEntryController",
             $scope.visit = $stateParams.internship;
         }
 
-        $scope.deleteVisit = function() {
-
+        $scope.deleteVisit = function(internship) {
             //console.log("visit");
             //console.log($scope.visit);
 
             //$http({ method: 'DELETE', url: '/Internships/' + $scope.visit.id}).
+
             $http({ method: 'POST', url: 'http://localhost:8080/api/Internships/Delete/' + $scope.visit._id}).
                 success(function (data, status, headers, config) {
 
@@ -27,18 +27,24 @@ internshipModule.controller("internshipDataEntryController",
                         $scope.$parent.internshipVisits.indexOf($scope.visit), 1);
 
                     //or with underscore
-                    /*
-                    var index = _.findIndex($scope.$parent.internshipVisits,
+                    //var index = _.findIndex($scope.$parent.internshipVisits,
 
-                        {id: $scope.visit.id});
+                    //    {id: $scope.visit.id});
 
-                    $scope.$parent.internshipVisits.splice(index, 1);
-                     */
+                    //$scope.$parent.internshipVisits.splice(index, 1);
+
                     $state.go('all-internships');
                 }).
                 error(function (data, status, headers, config) {
                     console.log("error deleting internship")
                 });
+
+            /*
+            internship.$delete().then(function() {
+                $scope.internshipVisits.splice(
+                    $scope.internshipVisits.indexOf(internship), 1);
+            });
+            */
         };
 
         $scope.saveVisit = function()

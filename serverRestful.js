@@ -18,7 +18,7 @@ app.use(cors());
 var mongodb = require('mongodb');
 var ObjectId = require('mongodb').ObjectID;
 var MongoClient = mongodb.MongoClient;
-var url = 'url to your mongodb';
+var url = 'mongodb://admin:admin@ds036178.mongolab.com:36178/nodeapi';
 //use eg. mongolab.com (free 500 mb database).
 // eg. 'mongodb://**username**:**password**@ds036178.mongolab.com:36178/nodeapi';
 
@@ -49,10 +49,7 @@ router.get('/', function(req, res) {
 
 // more routes for our API will happen here
 router.route('/Internships')
-
-    // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
-
         MongoClient.connect(url, function (err, db) {
             if (err) {
                 console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -71,7 +68,8 @@ router.route('/Internships')
                     }
                     //Close connection
                     db.close();
-                    res.json("Ok");
+
+                    res.json(result.ops[0]); //returns saved object (with new _id).
                 });
             }
         });
@@ -94,8 +92,7 @@ router.route('/Internships')
         });
     });
 
-
-router.route('/Internships/:internship_id')
+router.route('/Internships/:id')
     .put(function(req, res) {
 
         MongoClient.connect(url, function (err, db) {
@@ -111,20 +108,22 @@ router.route('/Internships/:internship_id')
             collection.update({"_id": id}, json, {upsert: false }, function(err, result) {
                 console.log("result");
                 console.log(result);
+                res.sendStatus(200);
             });
         });
     });
 
-router.route('/Internships/:internship_id')
+router.route('/Internships/:id')
     .delete(function(req, res) {
         MongoClient.connect(url, function (err, db) {
             if(err) { return console.dir(err); }
 
             var collection = db.collection('internshipsTest');
 
-            collection.remove( {"_id":  ObjectId(req.params.internship_id) },
+            collection.remove( {"_id":  ObjectId(req.params.id) },
                 {w:1}, function(err, result) {
                     console.log("deleted: " + result);
+                    res.sendStatus(200);
                 });
         });
     });
