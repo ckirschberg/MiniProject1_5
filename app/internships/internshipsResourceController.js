@@ -15,12 +15,14 @@ myApp.constant("baseUrl", "http://localhost:8080/api/Internships/")
 
 
         $scope.internshipsResource = $resource(baseUrl + ":id",
-        { id: "@id"});
-
-
-        console.log("scope parent");
-        console.log($scope.$parent);
-
+        { id: "@id"},{
+                update: {
+                    method: 'PUT'
+                }
+            }
+        );
+//        console.log("scope parent");
+//        console.log($scope.$parent);
 
         /*
         $scope.listInternships = function() {
@@ -43,14 +45,14 @@ myApp.constant("baseUrl", "http://localhost:8080/api/Internships/")
             var that = $scope.$parent; //get a ref to parent controllers scope
             //to be used inside $save - function
 
-            new $scope.internshipsResource(internship).$save(
+            new $scope.internshipsResource(internship).$save({ id: internship._id },
                 function(newInternship) {
 
-                    console.log("newInternship");
-                    console.log(newInternship);
+                    //console.log("newInternship");
+                    //console.log(newInternship);
 
-                    console.log("scope");
-                    console.log(that);
+                    //console.log("scope");
+                    //console.log(that);
 
                     that.internshipVisits.push(newInternship);
                     $state.go('all-internships');
@@ -58,20 +60,30 @@ myApp.constant("baseUrl", "http://localhost:8080/api/Internships/")
         };
 
         $scope.updateInternship = function(internship) {
-            internship.$save();
+            console.log(internship);
+
+            var that = $scope.$parent; //get a ref to parent controllers scope
+            //to be used inside $save - function
+
+            new $scope.internshipsResource(internship).$update(
+                function() {
+                    $state.go('all-internships');
+                });
         };
 
         $scope.saveVisit = function(){
             var internship = $scope.visit;
-            if (angular.isDefined(internship._id)) {
-                //update
-                $scope.updateInternship(internship);
+
+            if ($scope.visitForm.$valid) {
+                if (angular.isDefined(internship._id)) {
+                    //update
+                    console.log("update called");
+                    $scope.updateInternship(internship);
+                }
+                else {
+                    console.log("insert called");
+                    $scope.createInternship(internship);
+                }
             }
-            else {
-                $scope.createInternship(internship);
-          }
         };
-
-
-        //$scope.listInternships();
     }]);

@@ -92,7 +92,7 @@ router.route('/Internships')
         });
     });
 
-router.route('/Internships/:id')
+router.route('/Internships')
     .put(function(req, res) {
 
         MongoClient.connect(url, function (err, db) {
@@ -100,14 +100,18 @@ router.route('/Internships/:id')
                 return console.dir(err);
             }
 
+            //console.log("body");
+            //console.log(req.body);
+
             var id = ObjectId(req.body._id);
             delete req.body._id;
             var json = req.body;
 
             var collection = db.collection('internshipsTest');
-            collection.update({"_id": id}, json, {upsert: false }, function(err, result) {
+            collection.update({"_id": id}, json, { upsert: false }, function(err, result) {
                 console.log("result");
                 console.log(result);
+
                 res.sendStatus(200);
             });
         });
