@@ -1,6 +1,6 @@
 var myApp = angular.module("webservice", ['ngResource']);
 
-myApp.constant("baseUrl", "http://localhost:8080/api/Internships/")
+myApp.constant("baseUrl", "http://angularkea.azurewebsites.net/api/Internships/")
     .controller("internshipsResourceController",
     ['$scope','$resource', 'baseUrl', '$stateParams', '$state',
     function($scope, $resource, baseUrl, $stateParams, $state) {
@@ -12,7 +12,6 @@ myApp.constant("baseUrl", "http://localhost:8080/api/Internships/")
         if ($stateParams.internship) {
             $scope.visit = $stateParams.internship;
         }
-
 
         $scope.internshipsResource = $resource(baseUrl + ":id",
         { id: "@id"},{

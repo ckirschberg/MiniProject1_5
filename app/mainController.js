@@ -20,11 +20,14 @@ myApp.controller("mainController", ['$scope', '$http', '$resource',
         });
     */
 
-    var baseUrl = "http://localhost:8080/api/Internships/";
+    //var baseUrl = "http://localhost:8080/api/Internships/";
+
+    var baseUrl = "http://angularkea.azurewebsites.net/api/Internships/";
     $scope.internshipsResource = $resource(baseUrl + ":id",
         { id: "@id"});
 
     $scope.internshipVisits = $scope.internshipsResource.query();
+
 
     /*
     //$http.get("http://localhost:8080/api/Internships").
