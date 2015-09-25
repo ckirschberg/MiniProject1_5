@@ -54,7 +54,7 @@ internshipModule.controller("internshipDataEntryController",
                     //find the index of the object we edited and then replace it
                     //with the new, user-edited object.
 
-                    //$http({ method: 'POST', url: '/Internships/Edit', data: $scope.visit }).
+                    //If the api, as in my case, is a local api running on port 8080
                     $http({ method: 'POST', url: 'http://localhost:8080/api/Internships/Update',
                         data: $scope.visit }).
                         success(function (data, status, headers, config) {

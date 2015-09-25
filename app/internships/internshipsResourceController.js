@@ -20,14 +20,6 @@ myApp.constant("baseUrl", "http://angularkea.azurewebsites.net/api/Internships/"
                 }
             }
         );
-//        console.log("scope parent");
-//        console.log($scope.$parent);
-
-        /*
-        $scope.listInternships = function() {
-            $scope.internshipVisits = $scope.internshipsResource.query();
-        };
-        */
 
         $scope.deleteVisit = function(internship){
             var that = $scope.$parent;
@@ -44,27 +36,15 @@ myApp.constant("baseUrl", "http://angularkea.azurewebsites.net/api/Internships/"
             var that = $scope.$parent; //get a ref to parent controllers scope
             //to be used inside $save - function
 
-            new $scope.internshipsResource(internship).$save({ id: internship._id },
+            new $scope.internshipsResource(internship).$save(
                 function(newInternship) {
-
-                    //console.log("newInternship");
-                    //console.log(newInternship);
-
-                    //console.log("scope");
-                    //console.log(that);
-
                     that.internshipVisits.push(newInternship);
                     $state.go('all-internships');
                 });
         };
 
         $scope.updateInternship = function(internship) {
-            console.log(internship);
-
-            var that = $scope.$parent; //get a ref to parent controllers scope
-            //to be used inside $save - function
-
-            new $scope.internshipsResource(internship).$update(
+            new $scope.internshipsResource(internship).$update( {id: internship._id},
                 function() {
                     $state.go('all-internships');
                 });
@@ -76,11 +56,9 @@ myApp.constant("baseUrl", "http://angularkea.azurewebsites.net/api/Internships/"
             if ($scope.visitForm.$valid) {
                 if (angular.isDefined(internship._id)) {
                     //update
-                    console.log("update called");
                     $scope.updateInternship(internship);
                 }
                 else {
-                    console.log("insert called");
                     $scope.createInternship(internship);
                 }
             }
