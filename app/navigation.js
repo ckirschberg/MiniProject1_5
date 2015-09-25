@@ -13,8 +13,8 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state('new-internship', {
             url: "/new-internship",
             templateUrl: "internships/form-input.html",
-            controller: "internshipDataEntryController",
-            //controller: "internshipsResourceController",
+            //controller: "internshipDataEntryController",
+            controller: "internshipsResourceController",
             params: {internship: null}
         })
             .state('new-internship.subview1', {
@@ -28,6 +28,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state('all-internships', {
             url: "/all-internships",
             templateUrl: "internships/all-internships.html",
+            //controller: "internshipsResourceController",
             controller: 'internshipsAllController'
         });
 });
