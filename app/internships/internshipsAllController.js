@@ -10,5 +10,6 @@ myApp.controller("internshipsAllController",
         $scope.editInternship = function(visit){
             $state.go('new-internship', {internship: visit});
         };
+
     }]
 );
