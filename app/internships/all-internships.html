@@ -8,6 +8,10 @@
     <h3>Internship visits</h3>
 
     <div class="col-xs-12 noPadding searchBar">
+        <div class="col-xs-8 noPadding">
+            Limit: <select ng-model="limitVal" ng-options="item for item in limitRange" ></select>
+        </div>
+
         <span class="pull-right noPadding col-xs-4">
             <input class="search_input search_input_highlighted" type="text" maxlength="250"
                    value="" autocomplete="off" placeholder="Søg" name="q" ng-model="search"
@@ -25,7 +29,8 @@
         </span>
     </div>
 
-    <div class="visit" ng-repeat="visit in internshipVisits | showInternship:search " ng-click="editInternship(visit)">
+    <div class="visit" ng-repeat="visit in internshipVisits | showInternship:search | take:0:limitVal"
+         ng-click="editInternship(visit)">
         <div>
             <label>Student: </label>
             <span>{{visit.studentName}}
