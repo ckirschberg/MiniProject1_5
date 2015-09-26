@@ -7,7 +7,25 @@
 <div>
     <h3>Internship visits</h3>
 
-    <div class="visit" ng-repeat="visit in internshipVisits" ng-click="editInternship(visit)">
+    <div class="col-xs-12 noPadding searchBar">
+        <span class="pull-right noPadding col-xs-4">
+            <input class="search_input search_input_highlighted" type="text" maxlength="250"
+                   value="" autocomplete="off" placeholder="Søg" name="q" ng-model="search"
+                   ng-focus="focus=true;" ng-blur="focus=false;" ng-keyup="filterClassAndStudents()">
+
+            <span class="iconSearchPosition">
+                <i class="icon_search fa fa-search" ng-class="focus ? 'iconSearchDarkColor' : ''">
+                </i>
+            </span>
+            <span class="iconSearchResetPosition pull-right">
+                <i class="iconSearchReset fa fa-times-circle" ng-show="search.length > 0"
+                   ng-click="search=''; filterClassAndStudents();">
+                </i>
+            </span>
+        </span>
+    </div>
+
+    <div class="visit" ng-repeat="visit in internshipVisits | " ng-click="editInternship(visit)">
         <div>
             <label>Student: </label>
             <span>{{visit.studentName}}</span>
