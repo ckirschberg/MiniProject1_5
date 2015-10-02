@@ -7,10 +7,9 @@ var myApp = angular.module("internship");
 myApp.controller("mainController", ['$scope', '$http', '$resource',
     function($scope, $http, $resource) {
         console.log("hello from mainController");
+        $scope.internshipVisits = [];
 
 
-
-    /*
     $http.get("internships/hardcodedInternships.json").
         success(function (data) {
             $scope.internshipVisits = data;
@@ -18,16 +17,15 @@ myApp.controller("mainController", ['$scope', '$http', '$resource',
         error(function (data, status, headers, config) {
             console.log("error getting internships");
         });
-    */
 
     //var baseUrl = "http://localhost:8080/api/Internships/";
-
+/*
     var baseUrl = "http://angularkea.azurewebsites.net/api/Internships/";
     $scope.internshipsResource = $resource(baseUrl + ":id",
         { id: "@id"});
 
     $scope.internshipVisits = $scope.internshipsResource.query();
-
+*/
 
     /*
     //$http.get("http://localhost:8080/api/Internships").
