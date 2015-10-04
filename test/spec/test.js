@@ -23,35 +23,9 @@ describe('Person controller', function () {
             $controller = _$controller_;
         }));
 
+/*
         describe("personController.add", function() {
-            var controller, $scope;
-
-            beforeEach(inject(function($injector) {
-                $scope = {};
-                controller = $controller("personController", {$scope: $scope});
-
-                $httpBackend  = $injector.get('$httpBackend');
-                $httpBackend.when('GET', 'internships/hardcodedInternships.json').respond([
-                    { id: 1, name: "Entry 1" },
-                    { id: 2, name: "Entry 2" }
-                ]);
-            }));
-
-            it("initially has no entries", function(){
-                //expect($scope.internshipVisits.length).toBe(0);
-            });
-
-            it("loads entries with http", function(){
-                $httpBackend.expectGET('internships/hardcodedInternships.json').respond([
-                    { id: 1, name: "Entry 1" },
-                    { id: 2, name: "Entry 2" }
-                ]);;
-                //controller.load(function(){
-                    expect($scope.internshipVisits.length).toBe(2);
-                //});
-                $httpBackend.flush();
-            });
-
+            var $scope;
 
             it("should add 2 and 5 = 7", function() {
                 var result = $scope.add(2, 5);
@@ -67,6 +41,38 @@ describe('Person controller', function () {
                 expect(function() {$scope.add(2)}).toThrow(new Error("Missing parameter"));
             });
         });
+*/
+        describe("Mocks", function() {
+            var mockScope, backend;
+
+            beforeEach(inject(function($httpBackend) {
+                backend = $httpBackend;
+                backend.expect("GET", "internships/hardcodedInternships.json").respond([
+                    {"name": "Apples", "category": "Fruit"},
+                    {"name": "Carlsberg", "category": "Beer"}
+                ]);
+
+            }));
+
+            beforeEach(inject(function($controller, $rootScope, $http) {
+                mockScope = $rootScope.$new();
+                $controller("mainController", {
+                    $scope: mockScope,
+                    $http: $http
+                });
+                backend.flush();
+            }));
+
+            it("Makes an AJAX request", function() {
+                backend.verifyNoOutstandingExpectation();
+            });
+
+            it("Processes the data", function() {
+                expect(mockScope.internshipVisits).toBeDefined();
+                expect(mockScope.internshipVisits.length).toEqual(2);
+            });
+
+        })
     });
 
 });

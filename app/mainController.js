@@ -4,8 +4,8 @@
 
 var myApp = angular.module("internship");
 
-myApp.controller("mainController", ['$scope', '$http', '$resource',
-    function($scope, $http, $resource) {
+myApp.controller("mainController", ['$scope', '$http',
+    function($scope, $http) {
         console.log("hello from mainController");
         $scope.internshipVisits = [];
 
