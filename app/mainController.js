@@ -4,11 +4,16 @@
 
 var myApp = angular.module("internship");
 
-myApp.controller("mainController", ['$scope', '$http',
-    function($scope, $http) {
+myApp.controller("mainController", ['$scope', '$http', 'testService', 'logService',
+    function($scope, $http, testService, logService) {
         console.log("hello from mainController");
         $scope.internshipVisits = [];
 
+        var testObj = { name: "Christian", email: "chrk@kea.dk" };
+
+        logService.log(testService.get(), testObj);
+        testService.add(5);
+        logService.log(testService.get());
 
     $http.get("internships/hardcodedInternships.json").
         success(function (data) {

@@ -1,6 +1,29 @@
 /*global describe, it */
 'use strict';
 
+describe("Filter tests", function() {
+   var filterInstance;
+
+    beforeEach(module("internship"));
+
+    beforeEach(inject(function($filter){
+        filterInstance = $filter("labelCase");
+    }));
+
+    it("Changes case", function() {
+        var result = filterInstance("test phrase");
+        expect(result).toEqual("Test Phrase");
+    });
+
+    it("Reverse case", function() {
+       var result = filterInstance("test phrase", true);
+        expect(result).toEqual("tEST PHRASE");
+    });
+});
+
+
+
+
 describe('Person controller', function () {
     beforeEach(module('internship'));
 
@@ -74,7 +97,6 @@ describe('Person controller', function () {
 
         })
     });
-
 });
 
 
