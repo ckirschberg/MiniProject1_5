@@ -11,8 +11,17 @@ myApp.controller("mainController", ['$scope', '$http', 'testService', 'logServic
 
         var testObj = { name: "Christian", email: "chrk@kea.dk" };
 
-        logService.log(testService.get(), testObj);
+
         testService.add(5);
+        testService.test().then(function(result) {
+            alert(result);
+        }, function(reason) {
+            alert(reason);
+        });
+
+
+        logService.log(testService.get(), testObj);
+
         logService.log(testService.get());
 
     $http.get("internships/hardcodedInternships.json").

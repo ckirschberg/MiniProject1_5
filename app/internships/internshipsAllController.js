@@ -11,7 +11,6 @@ myApp.controller("internshipsAllController",
             $state.go('new-internship', {internship: visit});
         };
 
-
         $scope.limitRange = [1, 10, 20, 50, 100];
         $scope.limitVal = $scope.limitRange[0];
 
