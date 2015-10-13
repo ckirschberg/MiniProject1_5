@@ -41,6 +41,8 @@
 
 
     <div class="container extra-side-menu-width page-content">
+        <button class="btn btn-danger" ng-click="incrementPrices()"> Increment prices </button>
+        <div unordered-list="products" list-property="price"></div>
         <div ui-view></div>
     </div>
 
@@ -72,8 +74,7 @@
     <script src="internships/internshipsResourceController.js"></script>
     <script src="internships/internshipFilters.js"></script>
     <script src="js/testService.js"></script>
-    <script>
+    <script src="js/directives.js"></script>
 
-    </script>
 </body>
 </html>
