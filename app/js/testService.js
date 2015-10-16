@@ -1,4 +1,4 @@
-angular.module("internship").factory("testService", function() {
+angular.module("internship").factory("testService", function($q) {
     var counter = 0;
 
     return {
@@ -7,6 +7,18 @@ angular.module("internship").factory("testService", function() {
       },
       get: function() {
          return counter;
+      },
+      test: function(){
+          var deferred = $q.defer();
+
+          if (counter > 2) {
+              deferred.resolve("Data here");
+          }
+          else {
+              deferred.reject("Aborted");
+          }
+
+          return deferred.promise;
       }
     };
 }).factory("logService", function() {
@@ -19,6 +31,5 @@ angular.module("internship").factory("testService", function() {
                 console.log(object);
             }
         }
-
     }
 });
