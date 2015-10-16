@@ -14,6 +14,10 @@
     <!-- Pickadate - CSS -->
     <link href="../libs/css/default.css" rel="stylesheet" type="text/css" />
     <link href="../libs/css/default.date.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .bold {font-weight: bold;}
+    </style>
 </head>
 
 <body ng-controller="mainController">
@@ -42,14 +46,20 @@
 
     <div class="container extra-side-menu-width page-content">
         <button class="btn btn-danger" ng-click="incrementPrices()"> Increment prices </button>
-        <div unordered-list="products" list-property="price"></div>
+
+        <div unordered-list="products" list-property="price">
+            <button>Click me</button>
+        </div>
+
+        <div unordered-lists="products" list-property="name" template="table">
+            <button>Click me</button>
+        </div>
+
         <div ui-view></div>
     </div>
 
-
     <!-- Underscore -->
     <script src="../bower_components/underscore/underscore-min.js"></script>
-
 
     <!-- Scripts -->
     <script src="../libs/jquery.js"></script> <!-- jQuery -->

@@ -30,6 +30,12 @@ angular.module("internship").directive("unorderedList", function() {
                        console.log("newValue : " + newValue);
                         itemElement.text(newValue);
                     });
+
+                    var buttons = element.find("button");
+                    buttons.on("click", function(e) {
+                       element.find("li").toggleClass("bold");
+                    });
+
                 }());
             }
 
@@ -37,6 +43,27 @@ angular.module("internship").directive("unorderedList", function() {
         }
         else {
             console.log("Not an array");
+        }
+    }
+}).directive("unorderedList2", function() {
+    return {
+        link: function(scope, element, attrs) {
+            scope.data = scope[attrs["unorderedList"]];
+        },
+        restrict: "A", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
+        templateUrl: "itemTemplate.html"
+    }
+}).directive("unorderedLists", function() {
+    return {
+        link: function(scope, element, attrs) {
+            scope.data = scope[attrs["unorderedLists"]];
+        },
+        restrict: "A", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
+        templateUrl: function(elem, attrs) {
+            if (attrs["template"] == "table") {
+                return "templates/unorderedList3/tableTemplate.html"
+            }
+            return "itemTemplate.html"
         }
     }
 });
