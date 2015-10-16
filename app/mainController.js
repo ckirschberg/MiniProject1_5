@@ -15,6 +15,15 @@ myApp.controller("mainController", ['$scope', '$http', 'testService', 'logServic
             { name: "Pears", category: "Fruit", price: 2.02, expiry: 6 }
         ];
 
+        $scope.exerciseData = [
+            { type: "text", value: "Data 1"},
+            { type: "text", value: "Data 2"},
+            { type: "textarea", value: ""},
+            { type: "checkbox", caption: "Take over the world", value: false},
+            { type: "text", value: "Data 3"}
+        ];
+
+
         $scope.incrementPrices = function() {
           for(var i= 0; i < $scope.products.length; i++) {
               $scope.products[i].price++;
@@ -30,9 +39,9 @@ myApp.controller("mainController", ['$scope', '$http', 'testService', 'logServic
 
         testService.add(5);
         testService.test().then(function(result) {
-            alert(result);
+            //alert(result);
         }, function(reason) {
-            alert(reason);
+            //alert(reason);
         });
 
 

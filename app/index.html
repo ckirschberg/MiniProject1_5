@@ -51,8 +51,14 @@
             <button>Click me</button>
         </div>
 
+        <!--
         <div unordered-lists="products" list-property="name" template="table">
             <button>Click me</button>
+        </div>
+        -->
+
+        <div ng-repeat="item in data">
+            <editor-for nameprop="{{item.type}}" data="item"></editor-for>
         </div>
 
         <div ui-view></div>
