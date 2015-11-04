@@ -72,13 +72,13 @@ angular.module("internship").directive("unorderedList", function() {
             scope.data = scope[attrs["data"]];
         },
         restrict: "E", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
-        scope: { local: "@nameprop" },
+        //scope: { local: "@nameprop" },
         templateUrl: function(elem, attrs) {
 
-            if (scope.local == "text") {
+            if (elem.nameprop == "text") {
                 return "templates/editorFor/textTemplate.html"
             }
-            else if (scope.local == "textarea") {
+            else if (elem.nameprop == "textarea") {
                 return "templates/editorFor/textareaTemplate.html"
             }
             return "templates/editorFor/textTemplate.html";

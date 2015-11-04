@@ -1,25 +1,25 @@
 /*global describe, it */
 'use strict';
 
-describe("Filter tests", function() {
-   var filterInstance;
-
-    beforeEach(module("internship"));
-
-    beforeEach(inject(function($filter){
-        filterInstance = $filter("labelCase");
-    }));
-
-    it("Changes case", function() {
-        var result = filterInstance("test phrase");
-        expect(result).toEqual("Test Phrase");
-    });
-
-    it("Reverse case", function() {
-       var result = filterInstance("test phrase", true);
-        expect(result).toEqual("tEST PHRASE");
-    });
-});
+//describe("Filter tests", function() {
+//   var filterInstance;
+//
+//    beforeEach(module("internship"));
+//
+//    beforeEach(inject(function($filter){
+//        filterInstance = $filter("labelCase");
+//    }));
+//
+//    it("Changes case", function() {
+//        var result = filterInstance("test phrase");
+//        expect(result).toEqual("Test Phrase");
+//    });
+//
+//    it("Reverse case", function() {
+//       var result = filterInstance("test phrase", true);
+//        expect(result).toEqual("tEST PHRASE");
+//    });
+//});
 
 
 
@@ -46,9 +46,14 @@ describe('Person controller', function () {
             $controller = _$controller_;
         }));
 
-/*
+
         describe("personController.add", function() {
-            var $scope;
+            var $scope, controller;
+
+            beforeEach(function() { 
+                $scope = {}; 
+                controller = $controller("personController", {$scope: $scope}); 
+            });
 
             it("should add 2 and 5 = 7", function() {
                 var result = $scope.add(2, 5);
@@ -64,38 +69,39 @@ describe('Person controller', function () {
                 expect(function() {$scope.add(2)}).toThrow(new Error("Missing parameter"));
             });
         });
-*/
-        describe("Mocks", function() {
-            var mockScope, backend;
 
-            beforeEach(inject(function($httpBackend) {
-                backend = $httpBackend;
-                backend.expect("GET", "internships/hardcodedInternships.json").respond([
-                    {"name": "Apples", "category": "Fruit"},
-                    {"name": "Carlsberg", "category": "Beer"}
-                ]);
 
-            }));
-
-            beforeEach(inject(function($controller, $rootScope, $http) {
-                mockScope = $rootScope.$new();
-                $controller("mainController", {
-                    $scope: mockScope,
-                    $http: $http
-                });
-                backend.flush();
-            }));
-
-            it("Makes an AJAX request", function() {
-                backend.verifyNoOutstandingExpectation();
-            });
-
-            it("Processes the data", function() {
-                expect(mockScope.internshipVisits).toBeDefined();
-                expect(mockScope.internshipVisits.length).toEqual(2);
-            });
-
-        })
+        //describe("Mocks", function() {
+        //    var mockScope, backend;
+        //
+        //    beforeEach(inject(function($httpBackend) {
+        //        backend = $httpBackend;
+        //        backend.expect("GET", "internships/hardcodedInternships.json").respond([
+        //            {"name": "Apples", "category": "Fruit"},
+        //            {"name": "Carlsberg", "category": "Beer"}
+        //        ]);
+        //
+        //    }));
+        //
+        //    beforeEach(inject(function($controller, $rootScope, $http) {
+        //        mockScope = $rootScope.$new();
+        //        $controller("mainController", {
+        //            $scope: mockScope,
+        //            $http: $http
+        //        });
+        //        backend.flush();
+        //    }));
+        //
+        //    it("Makes an AJAX request", function() {
+        //        backend.verifyNoOutstandingExpectation();
+        //    });
+        //
+        //    it("Processes the data", function() {
+        //        expect(mockScope.internshipVisits).toBeDefined();
+        //        expect(mockScope.internshipVisits.length).toEqual(2);
+        //    });
+        //
+        //})
     });
 });
 

@@ -33,7 +33,6 @@ myApp.controller("mainController", ['$scope', '$http', 'testService', 'logServic
 
 
 
-
         var testObj = { name: "Christian", email: "chrk@kea.dk" };
 
 
