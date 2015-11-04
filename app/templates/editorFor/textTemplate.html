@@ -1,1 +1,6 @@
-<input type="text" class="form-control" value="data.value" />
+{{data}}
+
+
+<div ng-repeat="product in data">
+    <input type="text" class="form-control" ng-model="product.price" />
+</div>

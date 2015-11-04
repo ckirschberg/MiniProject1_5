@@ -45,43 +45,48 @@ angular.module("internship").directive("unorderedList", function() {
             console.log("Not an array");
         }
     }
-}).directive("unorderedList2", function() {
-    return {
-        link: function(scope, element, attrs) {
-            scope.data = scope[attrs["unorderedList"]];
-        },
-        restrict: "A", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
-        templateUrl: "itemTemplate.html"
-    }
 }).directive("unorderedLists", function() {
     return {
+        //scope: {
+        //
+        //},
         link: function(scope, element, attrs) {
             scope.data = scope[attrs["unorderedLists"]];
         },
         restrict: "A", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
-        templateUrl: function(elem, attrs) {
-            if (attrs["type"] == "text") {
-                return "templates/unorderedList3/tableTemplate.html"
-            }
-            return "itemTemplate.html"
-        }
+        templateUrl: "templates/editorFor/textTemplate.html"
     }
+//}).directive("unorderedLists", function() {
+//    return {
+//        link: function(scope, element, attrs) {
+//            scope.data = scope[attrs["unorderedLists"]];
+//        },
+//        restrict: "A", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
+//        templateUrl: function(elem, attrs) {
+//
+//            if (attrs["type"] == "text") {
+//                return "templates/unorderedList3/tableTemplate.html"
+//            }
+//            return "itemTemplate.html"
+//        }
+//    }
 }).directive("editorFor", function() {
     return {
         link: function(scope, element, attrs) {
-            scope.data = scope[attrs["data"]];
+
+            scope.data = scope[attrs["unorderedLists"]];
         },
         restrict: "E", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
         //scope: { local: "@nameprop" },
         templateUrl: function(elem, attrs) {
 
-            if (elem.nameprop == "text") {
-                return "templates/editorFor/textTemplate.html"
+            console.log(elem);
+            console.log(attrs);
+
+            if (attrs["type"] == "text") {
+                return "templates/unorderedList3/tableTemplate.html"
             }
-            else if (elem.nameprop == "textarea") {
-                return "templates/editorFor/textareaTemplate.html"
-            }
-            return "templates/editorFor/textTemplate.html";
+            return "templates/unorderedList3/itemTemplate.html"
         }
-    }
-});
+    }}
+);
