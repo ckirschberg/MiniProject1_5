@@ -62,10 +62,10 @@
             <!--</div>-->
         <!--</div>-->
 
-        <div ng-repeat="product in products">
-            <editor-for type="text"></editor-for>
-            <editor-for type="textarea"></editor-for>
-            <editor-for type="checkbox"></editor-for>
+        <div ng-repeat="product in products2">
+            <editor-for type="text" model-data="product.name"></editor-for>
+            <editor-for type="textarea" model-data="product.category"></editor-for>
+            <editor-for type="checkbox" model-data="product.available"></editor-for>
         </div>
 
             <!--<editor-for datasource="products" template="table" type="textarea">-->

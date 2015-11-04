@@ -8,6 +8,9 @@ myApp.controller("mainController", ['$scope', '$http', 'testService', 'logServic
     function($scope, $http, testService, logService) {
         console.log("hello from mainController");
         $scope.internshipVisits = [];
+        $scope.model = { name: 'World' };
+        $scope.name = "Felipe";
+
 
         $scope.products = [
             { name: "Apples", category: "Fruit", price: 1.20, expiry: 10 },

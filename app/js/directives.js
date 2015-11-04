@@ -58,23 +58,15 @@ angular.module("internship").directive("unorderedList", function() {
     }
 }).directive("editorFor", function() {
     return {
+        scope: {
+            modelData: '='
+        },
+        replace: true,
         link: function(scope, element, attrs) {
-            console.log("link");
-            console.log(element);
-            console.log(attrs);
-
-            //scope.data = scope[attrs["datasource"]];
-
             scope.type = attrs["type"];
-
-            console.log(scope);
         },
         restrict: "E", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
-        //scope: { local: "@nameprop" },
         templateUrl: function(elem, attrs) {
-            console.log(elem);
-            console.log(attrs);
-
             if (attrs["type"] == "checkbox") {
                 return "templates/editorFor/checkboxTemplate.html"
             }
@@ -87,18 +79,3 @@ angular.module("internship").directive("unorderedList", function() {
         }
     }}
 );
-
-//}).directive("unorderedLists", function() {
-//    return {
-//        link: function(scope, element, attrs) {
-//            scope.data = scope[attrs["unorderedLists"]];
-//        },
-//        restrict: "A", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
-//        templateUrl: function(elem, attrs) {
-//
-//            if (attrs["type"] == "text") {
-//                return "templates/unorderedList3/tableTemplate.html"
-//            }
-//            return "itemTemplate.html"
-//        }
-//    }
