@@ -56,6 +56,38 @@ angular.module("internship").directive("unorderedList", function() {
         restrict: "A", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
         templateUrl: "templates/editorFor/textTemplate.html"
     }
+}).directive("editorFor", function() {
+    return {
+        link: function(scope, element, attrs) {
+            console.log("link");
+            console.log(element);
+            console.log(attrs);
+
+            //scope.data = scope[attrs["datasource"]];
+
+            scope.type = attrs["type"];
+
+            console.log(scope);
+        },
+        restrict: "E", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
+        //scope: { local: "@nameprop" },
+        templateUrl: function(elem, attrs) {
+            console.log(elem);
+            console.log(attrs);
+
+            if (attrs["type"] == "checkbox") {
+                return "templates/editorFor/checkboxTemplate.html"
+            }
+            else if (attrs["type"] == "textarea") {
+                return "templates/editorFor/textareaTemplate.html"
+            }
+            else {
+                return "templates/editorFor/textTemplate.html"
+            }
+        }
+    }}
+);
+
 //}).directive("unorderedLists", function() {
 //    return {
 //        link: function(scope, element, attrs) {
@@ -70,23 +102,3 @@ angular.module("internship").directive("unorderedList", function() {
 //            return "itemTemplate.html"
 //        }
 //    }
-}).directive("editorFor", function() {
-    return {
-        link: function(scope, element, attrs) {
-
-            scope.data = scope[attrs["unorderedLists"]];
-        },
-        restrict: "E", //Allows use as E: Element, A: Attribute, C: Class, M: Comment
-        //scope: { local: "@nameprop" },
-        templateUrl: function(elem, attrs) {
-
-            console.log(elem);
-            console.log(attrs);
-
-            if (attrs["type"] == "text") {
-                return "templates/unorderedList3/tableTemplate.html"
-            }
-            return "templates/unorderedList3/itemTemplate.html"
-        }
-    }}
-);

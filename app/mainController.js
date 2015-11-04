@@ -15,6 +15,31 @@ myApp.controller("mainController", ['$scope', '$http', 'testService', 'logServic
             { name: "Pears", category: "Fruit", price: 2.02, expiry: 6 }
         ];
 
+        $scope.products2 = [
+            {
+                name:     { value: "Apples", type: "text"},
+                category: { value: "Fruit", type: "textarea" },
+                price:    { value: 1.20, type: "number" },
+                //expiry:   { value: 10, type:"Text" },
+                available:{ value: true, type:"checkbox"}
+            },
+            {
+                name:     { value: "Bananas", type: "text"},
+                category: { value: "Fruit", type: "textarea" },
+                price:    { value: 2.53, type: "number" },
+                //expiry:   { value: 12, type:"Text" },
+                available:{ value: true, type:"checkbox"}
+            },
+            {
+                name:     { value: "Oranges", type: "text"},
+                category: { value: "Fruit", type: "textarea" },
+                price:    { value: 4.20, type: "number" },
+                //expiry:   { value: 5, type:"Text" },
+                available:{ value: false, type:"checkbox"}
+            },
+        ];
+
+
         $scope.exerciseData = [
             { type: "text", value: "Data 1"},
             { type: "text", value: "Data 2"},

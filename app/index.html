@@ -43,7 +43,6 @@
         </h3>
     </nav>
 
-
     <div class="container extra-side-menu-width page-content">
         <button class="btn btn-danger" ng-click="incrementPrices()"> Increment prices </button>
 
@@ -59,18 +58,19 @@
 
 
         <!--<div ng-repeat="data in products">-->
-            <div unordered-lists="products" list-property="price">
-            </div>
+            <!--<div unordered-lists="products" list-property="price">-->
+            <!--</div>-->
         <!--</div>-->
 
-        <!--<div ng-repeat="item in data">-->
-            <!--<editor-for unordered-list="products" type="text" unordered-list="products">-->
-            <!--</editor-for>-->
-        <!--</div>-->
+        <div ng-repeat="product in products">
+            <editor-for type="text"></editor-for>
+            <editor-for type="textarea"></editor-for>
+            <editor-for type="checkbox"></editor-for>
+        </div>
 
-        <!--<editor-for unordered-list="products" nameprop="{{item.type}}"-->
-                    <!--data="item" template="table">-->
+            <!--<editor-for datasource="products" template="table" type="textarea">-->
         <!--</editor-for>-->
+
 
         <div ui-view></div>
     </div>
